@@ -9,7 +9,9 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cors());
 // apis
-
+app.get('/',(req,resizeBy) => {
+  resizeBy.send("server is running")
+})
 app.post('/uploadcourse', UploadCourse);
 app.post("/teacher/signup",TeacherSignUp);
 app.post("/student/signup",StudentSignUp);
