@@ -1,7 +1,7 @@
 const express = require('express');
 const connectDB = require('./db/conn');
 const cors = require('cors');
-const { UploadCourse, TeacherSignUp, StudentSignUp, TeacherSignIn, StudentSignIn, GetCourse } = require('./db/controller');
+const { UploadCourse, TeacherSignUp, StudentSignUp, TeacherSignIn, StudentSignIn, GetCourse, GetCourseByid } = require('./db/controller');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -18,6 +18,7 @@ app.post("/student/signup",StudentSignUp);
 app.post("/teacher/signin",TeacherSignIn);
 app.post("/student/signin",StudentSignIn);
 app.get("/allcources",GetCourse)
+app.get("/allcourcesbyid/:id",GetCourseByid)
 connectDB()
 
 // Start the server

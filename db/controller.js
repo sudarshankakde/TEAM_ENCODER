@@ -36,6 +36,17 @@ const { CourseModel } = require('./schema/course');
       }
 }
 
+const GetCourseByid=async(req,res) => {
+ let id= req.params.id;
+  try {
+      const courses= await CourseModel.findById(id);
+      res.status(201).json(courses);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
 // Sign up for students
  const StudentSignUp = async (req, res) => {
   try {
@@ -105,4 +116,4 @@ const { CourseModel } = require('./schema/course');
 };
 
 
-module.exports={TeacherSignIn,StudentSignIn,TeacherSignUp,StudentSignUp,UploadCourse,GetCourse}
+module.exports={TeacherSignIn,StudentSignIn,TeacherSignUp,StudentSignUp,UploadCourse,GetCourse,GetCourseByid}
